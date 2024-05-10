@@ -16,7 +16,8 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space)){
+        //플레이어 이동
+        if(Input.GetKey(KeyCode.LeftShift)){
             xpos = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed * 1.5f;
             ypos = Input.GetAxisRaw("Vertical") * Time.deltaTime * speed * 1.5f;
         }
@@ -27,5 +28,14 @@ public class PlayerManager : MonoBehaviour
 
         
         this.transform.position += new Vector3(xpos, ypos,this.transform.position.z);
+
+        //플레이어 움직임 제한 (범위 밖으로 나가지 못하게)
+        Vector3 pos = Camera.main.WorldToViewportPoint(this.transform.position);
+        if (pos.x < 0f) pos.x = 0f;
+        if (pos.x > 1f) pos.x = 1f;
+        if (pos.y < 0f) pos.y = 0f;
+        if (pos.y > 1f) pos.y = 1f;
+
+        this.transform.position = Camera.main.ViewportToWorldPoint(pos);
     }
 }
