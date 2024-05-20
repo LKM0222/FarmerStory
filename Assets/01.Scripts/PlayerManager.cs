@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -56,7 +57,11 @@ public class PlayerManager : MonoBehaviour
         if(other.tag == "Item"){ //태그 확인
             if(Input.GetKey(KeyCode.Space)){ //아이템 습득 키 확인
                 GameManager.Instance.AddInventoryItem(other.GetComponent<ItemManager>().ReturnItem()); //인벤토리에 아이템 추가
-                print("아이템 추가됨");
+                
+                GameObject go = ObjectPoolingManager.Instance.GetQueue(ObjectPoolingManager.Instance.slotQueue); //미리 만들어둔 오브젝트를 가져옴
+                go.GetComponent<Image>().sprite = other.GetComponent<SpriteRenderer>().sprite;
+                go.transform.SetParent(GameManager.Instance.cropsParent);
+
                 Destroy(other.gameObject); //인벤토리에 추가해줬으니, 오브젝트를 삭제
             }
         }

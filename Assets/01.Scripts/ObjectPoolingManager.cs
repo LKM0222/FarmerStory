@@ -26,12 +26,12 @@ public class ObjectPoolingManager : MonoBehaviour
         }
     }
 
-    public void InsertQueue(GameObject go, Queue queue){
+    public void InsertQueue(GameObject go, Queue queue){ //오브젝트를 숨길때
         queue.Enqueue(go);
         go.SetActive(false);
     }
 
-    public GameObject GetQueue(Queue<GameObject> queue){
+    public GameObject GetQueue(Queue<GameObject> queue){ //오브젝트를 꺼낼때
         GameObject go = queue.Dequeue();
         go.SetActive(true);
         return go;

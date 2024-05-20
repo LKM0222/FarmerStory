@@ -15,6 +15,10 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
+    #region Parents
+    public Transform cropsParent;
+    #endregion
+
     [SerializeField] List<Item> inventory = new List<Item>();
 
     public void AddInventoryItem(Item item){
