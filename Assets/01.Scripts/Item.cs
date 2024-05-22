@@ -24,37 +24,37 @@ public class Item
     }
 
     #region Getter
-    string GetItemName(){
+    public string GetItemName(){
         return item_name;
     }
-    int GetItemCode(){
+    public int GetItemCode(){
         return item_code;
     }
-    ItemType GetItemType(){
+    public ItemType GetItemType(){
         return item_type;
     }
-    int GetItemPrice(){
+    public int GetItemPrice(){
         return item_price;
     }
-    string GetItemInfo(){
+    public string GetItemInfo(){
         return item_info;
     }
     #endregion
 
     #region Setter
-    void SetItemName(string _name){
+    public void SetItemName(string _name){
         item_name = _name;
     }
-    void SetItemCode(int _code){
+    public void SetItemCode(int _code){
         item_code = _code;
     }
-    void SetItemType(ItemType _type){
+    public void SetItemType(ItemType _type){
         item_type = _type;
     }
-    void SetItemPrice(int _price){
+    public void SetItemPrice(int _price){
         item_price = _price;
     }
-    void SetItemInfo(string _info){
+    public void SetItemInfo(string _info){
         item_info = _info;
     }
     #endregion

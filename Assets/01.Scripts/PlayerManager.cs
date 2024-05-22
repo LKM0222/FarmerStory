@@ -57,10 +57,15 @@ public class PlayerManager : MonoBehaviour
         if(other.tag == "Item"){ //태그 확인
             if(Input.GetKey(KeyCode.Space)){ //아이템 습득 키 확인
                 GameManager.Instance.AddInventoryItem(other.GetComponent<ItemManager>().ReturnItem()); //인벤토리에 아이템 추가
-                
+
                 GameObject go = ObjectPoolingManager.Instance.GetQueue(ObjectPoolingManager.Instance.slotQueue); //미리 만들어둔 오브젝트를 가져옴
-                go.GetComponent<Image>().sprite = other.GetComponent<SpriteRenderer>().sprite;
-                go.transform.SetParent(GameManager.Instance.cropsParent);
+                go.GetComponent<SlotManager>().SetItem(other.GetComponent<ItemManager>().ReturnItem()); //슬롯에 추가할 아이템 정보 받아오기.
+                go.transform.GetChild(0).GetComponent<Image>().sprite = other.GetComponent<SpriteRenderer>().sprite; //이미지 변경
+
+                go.GetComponent<SlotManager>().SetTooltipObj(GameManager.Instance.tooltip); //툴팁 오브젝트 설정
+                go.GetComponent<SlotManager>().SetTooltipTextObj(GameManager.Instance.tooltipText); //툴팁 텍스트 설정
+
+                go.transform.SetParent(GameManager.Instance.cropsParent); //부모 변경
 
                 Destroy(other.gameObject); //인벤토리에 추가해줬으니, 오브젝트를 삭제
             }

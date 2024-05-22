@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,6 +20,11 @@ public class GameManager : MonoBehaviour
     public Transform cropsParent;
     #endregion
 
+    #region Tooltip
+    public GameObject tooltip;
+    public Text tooltipText;
+    #endregion
+
     [SerializeField] List<Item> inventory = new List<Item>();
 
     public void AddInventoryItem(Item item){
@@ -27,4 +33,5 @@ public class GameManager : MonoBehaviour
     public void DeleteInventoryItem(Item item){
         inventory.Remove(item);
     }
+
 }
