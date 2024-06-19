@@ -51,9 +51,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-
-    //아이템 습득
+    //테그 확인
     private void OnTriggerStay2D(Collider2D other) {
+        //아이템 습득
         if(other.tag == "Item"){ //태그 확인
             if(Input.GetKey(KeyCode.Space)){ //아이템 습득 키 확인
                 GameManager.Instance.AddInventoryItem(other.GetComponent<ItemManager>().ReturnItem()); //인벤토리에 아이템 추가
@@ -69,6 +69,11 @@ public class PlayerManager : MonoBehaviour
 
                 Destroy(other.gameObject); //인벤토리에 추가해줬으니, 오브젝트를 삭제
             }
+        }
+
+        //토양 체크
+        if(other.tag == "Soil"){
+            // print("soil");
         }
     }
 }
