@@ -25,13 +25,23 @@ public class GameManager : MonoBehaviour
     public Text tooltipText;
     #endregion
 
-    [SerializeField] List<Item> inventory = new List<Item>();
+    //hand
+    public Item handItem;
 
-    public void AddInventoryItem(Item item){
+    //inventory
+    public List<Item> cropInventory = new List<Item>();
+    public List<Item> seedInventory = new List<Item>();
+
+
+    //inventory method
+    public void AddInventoryItem(List<Item> inventory, Item item){
         inventory.Add(item);
     }
-    public void DeleteInventoryItem(Item item){
+    public void DeleteInventoryItem(List<Item> inventory, Item item){
         inventory.Remove(item);
     }
+
+    //handMethod
+    
 
 }

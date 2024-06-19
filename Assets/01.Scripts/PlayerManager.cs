@@ -56,7 +56,7 @@ public class PlayerManager : MonoBehaviour
         //아이템 습득
         if(other.tag == "Item"){ //태그 확인
             if(Input.GetKey(KeyCode.Space)){ //아이템 습득 키 확인
-                GameManager.Instance.AddInventoryItem(other.GetComponent<ItemManager>().ReturnItem()); //인벤토리에 아이템 추가
+                GameManager.Instance.AddInventoryItem(GameManager.Instance.cropInventory, other.GetComponent<ItemManager>().ReturnItem()); //인벤토리에 아이템 추가
 
                 GameObject go = ObjectPoolingManager.Instance.GetQueue(ObjectPoolingManager.Instance.slotQueue); //미리 만들어둔 오브젝트를 가져옴
                 go.GetComponent<SlotManager>().SetItem(other.GetComponent<ItemManager>().ReturnItem()); //슬롯에 추가할 아이템 정보 받아오기.
@@ -73,7 +73,12 @@ public class PlayerManager : MonoBehaviour
 
         //토양 체크
         if(other.tag == "Soil"){
-            // print("soil");
+            if(Input.GetKey(KeyCode.Space)){
+                //아이템을 들고있고, 아이템의 갯수가 0이 아니라면
+                if(GameManager.Instance.handItem.GetItemCount() > 0 && GameManager.Instance.handItem != null){
+                    print(other.gameObject);
+                }
+            }
         }
     }
 }
